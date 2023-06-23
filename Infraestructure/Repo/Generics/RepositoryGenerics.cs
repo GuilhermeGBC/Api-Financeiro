@@ -37,28 +37,30 @@ namespace Infraestructure.Repo.Generics
             }
         }
 
-
         public async Task<TEntity> GetEntityById(int id)
         {
             using (var db = new ContextBase(_OptionsBuilder))
             {
-              return await db.Set<TEntity>().FindAsync(id);
+                return await db.Set<TEntity>().FindAsync(id);
             }
         }
 
-        public Task<List<TEntity>> List()
+        public async Task<List<TEntity>> List()
         {
             using (var db = new ContextBase(_OptionsBuilder))
             {
-
+                return await db.Set<TEntity>().ToListAsync();
             }
         }
 
-        public Task Update(TEntity obj)
+        public async Task Update(TEntity obj)
         {
-            throw new NotImplementedException();
+            using (var db = new ContextBase(_OptionsBuilder))
+            {
+                db.Set<TEntity>().Update(obj);
+                await db.SaveChangesAsync();
+            }
         }
-
 
         public void Dispose()
         {

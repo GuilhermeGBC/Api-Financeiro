@@ -11,7 +11,7 @@ namespace Domain.Interfaces.IGenerics
         Task Add(TEntity obj);
         Task Update(TEntity obj);
         Task Delete(TEntity obj);
-        Task GetEntityById<TEntity>(int id);
+        Task<TEntity> GetEntityById(int id);
         Task<List<TEntity>> List();
     }
 }
