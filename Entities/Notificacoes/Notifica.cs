@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,10 +14,11 @@ namespace Entities.Notificacoes
             notificacoes = new List<Notifica>();
         }
 
+        [NotMapped]
         public string NomePropriedade { get; set; }
-
+        [NotMapped]
         public string mensagem { get; set; }
-
+        [NotMapped]
         public List<Notifica> notificacoes { get; set; }
 
 
