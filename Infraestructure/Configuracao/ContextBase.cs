@@ -12,14 +12,14 @@ namespace Infraestructure.Configuracao
     public class ContextBase : IdentityDbContext<ApplicationUser>
     {
 
-        public ContextBase(DbContextOptions options) : base(options) 
-        {           
+        public ContextBase(DbContextOptions options) : base(options)
+        {
         }
 
-        DbSet<SistemaFinanceiro> SistemaFinanceiro { get; set; }
-        DbSet<UsuarioSistemaFinanceiro> UsuarioSistemaFinanceiro { get; set; }
-        DbSet<Categoria> Categoria { get; set; }
-        DbSet<Despesa> Despesa { get; set; }
+        public DbSet<SistemaFinanceiro> SistemaFinanceiro { get; set; }
+        public DbSet<UsuarioSistemaFinanceiro> UsuarioSistemaFinanceiro { get; set; }
+        public DbSet<Categoria> Categoria { get; set; }
+        public DbSet<Despesa> Despesa { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -28,15 +28,13 @@ namespace Infraestructure.Configuracao
                 optionsBuilder.UseSqlServer(ObterStringConexao());
                 base.OnConfiguring(optionsBuilder);
             }
-            
+
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<ApplicationUser>().ToTable("AspNetUsers").HasKey(t => t.Id);
         }
-
-
 
         public string ObterStringConexao()
         {
