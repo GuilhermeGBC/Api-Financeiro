@@ -11,6 +11,6 @@ namespace Domain.Interfaces.InterfaceServices
     {
         Task AdicionarDespesa(Despesa despesa);
         Task AtualizarDespesas(Despesa despesa);
-        Task CarregarGraficos(string emailUsuario);
+        Task<object> CarregarGraficos(string emailUsuario);
     }
 }

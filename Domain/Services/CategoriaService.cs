@@ -18,16 +18,18 @@ namespace Domain.Services
             _interfaceCategoria = interfaceCategoria;
         }
 
-        public Task AdicionarCategoria(Categoria categoria)
+        public async Task AdicionarCategoria(Categoria categoria)
         {
-            var valido = _interfaceCategoria.valida
-
-            throw new NotImplementedException();
+            var valido = categoria.ValidaPropriedadeString(categoria.Nome, "Nome");
+            if(valido)
+                await _interfaceCategoria.Add(categoria);
         }
 
-        public Task AtualizarCategoria(Categoria categoria)
+        public async Task AtualizarCategoria(Categoria categoria)
         {
-            throw new NotImplementedException();
+            var valido = categoria.ValidaPropriedadeString(categoria.Nome, "Nome");
+            if(valido)
+                await _interfaceCategoria.Update(categoria);
         }
     }
 }
