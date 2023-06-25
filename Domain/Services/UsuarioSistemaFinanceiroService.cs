@@ -21,8 +21,6 @@ namespace Domain.Services
 
         public async Task CadastrarUsuarioSistema(UsuarioSistemaFinanceiro usuarioSistemaFinanceiro)
         {
-            var valido = usuarioSistemaFinanceiro.ValidaPropriedadeString(usuarioSistemaFinanceiro.Nome, "Nome");
-            if (valido)
                 await _interfaceSistemaFinanceiro.Add(usuarioSistemaFinanceiro);
             
         }
