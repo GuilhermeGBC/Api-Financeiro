@@ -36,7 +36,7 @@ namespace WebApi.Controllers
             return despesa;
         }
 
-        [HttpPost("/api/AtualizarDespesa")]
+        [HttpPut("/api/AtualizarDespesa")]
         [Produces("application/json")]
         public async Task<object> AtualizarDespesa(Despesa despesa)
         {
@@ -67,7 +67,7 @@ namespace WebApi.Controllers
             return true;
         }
 
-        [HttpDelete("/api/CarregaGraficos")]
+        [HttpGet("/api/CarregaGraficos")]
         [Produces("application/json")]
         public async Task<object> CarregaGraficos(string emailUsuario)
         {
